@@ -1,0 +1,48 @@
+body{
+    /* background-color: rgb(61, 38, 2); */
+    background: linear-gradient(to bottom, rgba(165,135,141,1) 1%,rgba(140,64,80,1) 68%,rgba(140,64,80,1) 68%,rgba(109,0,25,1) 100%);
+    background-repeat: no-repeat;
+}
+.card{
+    background-color: rgba(140,64,80,1);
+    
+    color:white;
+    /* margin: 5px;
+    padding:5px; */
+    border-radius: 30px;
+}
+.header{
+    text-align: center;
+    padding-top:15px;
+    font-family: 'Italianno', cursive;
+    font-size: 80px;
+    color:white;
+}
+.input-group{
+    padding: 15px;
+}
+.card-img-top{
+    border-radius: 30px;
+}
+.selected-card{
+    background-color: white;
+    
+    color:rgba(140,64,80,1);;
+    
+}
+select{
+    margin :0px 5px;
+}
+/* .card{
+    padding:10px 10px;
+    background-color: lightgray;
+    display: inline-block;
+    width: 300px;
+    margin: 10px;
+    text-align: center;
+}
+.gallery{
+    margin: auto;
+    text-align: center;
+    width: 90%;
+} */
