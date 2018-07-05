@@ -41,11 +41,18 @@
                               
                     </div>
                     <!-- ng-onchange="orderBySelect()" -->
-                    <select class="selectpicker"  ng-model="propToOrder">
+                    <!-- <select class="selectpicker" ng-model="propToOrder" ng-options="x for x in orderByArr" >
+                    </select> -->
+                    <select ng-model="propToOrder" class="selectpicker">
+                        <option ng-repeat="x in orderByArr" value="{{x.attName}}">{{x.attValue}}</option>
+                        </select>
+
+
+                    <!-- <select class="selectpicker"  ng-model="propToOrder">
                             <option value="firstName">First Name</option>
                             <option value="lastName">Last Name</option>
                             <option value="birthDate">Birtday</option>
-                          </select>
+                          </select> -->
                     <input ng-model="query" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
                 </div>
 
@@ -54,7 +61,8 @@
             
             <div class="row">
                     <div ng-hide="filteredCounter>0" class="alert alert-warning" role="alert">
-                            This is a warning alert—check it out!
+                            <p>No Actors were found !
+                            ( try changing the filter ) </p> 
                           </div>     
                 <div ng-repeat="celeb in celebArr| filter : filterBy | orderBy : propToOrder" class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="card p-1 mb-4" ng-class="{'selected-card':celeb.isSelected}" ng-click="cardWasClicked(celeb)">                        
@@ -72,8 +80,14 @@
 
             </div>
         </div>
-    </main>
+    
+<div class="white-fonts">
+    <button ng-click="LookInTMDB()">Push Me</button>
+    <p>Look for moviews</p>
+    <p>What are the most popular movies?</p>
 
+</div>
+</main>
 </body>
 
 </html>
