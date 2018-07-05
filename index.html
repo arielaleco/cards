@@ -51,12 +51,11 @@
 
             </div>
             
+            
             <div class="row">
-                    <div class="alert alert-warning" role="alert">
+                    <div ng-hide="filteredCounter>0" class="alert alert-warning" role="alert">
                             This is a warning alert—check it out!
-                          </div>
-
-                 <div ng-hide="filteredCounter>0"> No Actors Found</div>
+                          </div>     
                 <div ng-repeat="celeb in celebArr| filter : filterBy | orderBy : propToOrder" class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="card p-1 mb-4" ng-class="{'selected-card':celeb.isSelected}" ng-click="cardWasClicked(celeb)">                        
                         <img class="card-img-top" ng-src="{{celeb.celebImage}}" alt="Card image" style="width:100%">
