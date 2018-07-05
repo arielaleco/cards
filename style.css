@@ -2,6 +2,7 @@ body{
     /* background-color: rgb(61, 38, 2); */
     background: linear-gradient(to bottom, rgba(165,135,141,1) 1%,rgba(140,64,80,1) 68%,rgba(140,64,80,1) 68%,rgba(109,0,25,1) 100%);
     background-repeat: no-repeat;
+    background-color:rgba(109,0,25,1);
 }
 .card{
     background-color: rgba(140,64,80,1);

@@ -13,6 +13,7 @@ app.controller("galleryCtrl", function ($scope) {
 
     $scope.query = "";
      $scope.propToOrder="firstName";
+     $scope.filteredCounter =0;
     // $scope.orderBySelect = function(prop){
 
     //     $scope.propToOrder = prop;
@@ -27,10 +28,15 @@ app.controller("galleryCtrl", function ($scope) {
          celeb.isSelected = true ;                  
     }
 
-    $scope.filterBy = function (oneCard) {
+    $scope.filterBy = function (oneCard,index) {
         
+        if (index==0)
+        {
+            $scope.filteredCounter = 0; 
+        }
         if((oneCard.firstName).toLowerCase().includes(($scope.query).toLowerCase()))
         {
+            $scope.filteredCounter++;
             return true;
         } else {
             return false;
