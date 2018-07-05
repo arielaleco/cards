@@ -22,10 +22,10 @@ app.controller("galleryCtrl", function ($scope, $http) {
     }
 
     // $scope.orderByArr = ["firstName", "lastName", "birthDate"];
-    $scope.orderByArr = [        
-        {attName : "firstName", attValue : "First Name"},
-        {attName : "lastName", attValue : "Last Name"},
-        {attName : "birthDate", attValue : "Birth Date"}
+    $scope.orderByArr = [
+        { attName: "firstName", attValue: "First Name" },
+        { attName: "lastName", attValue: "Last Name" },
+        { attName: "birthDate", attValue: "Birth Date" }
     ];
 
 
@@ -39,14 +39,14 @@ app.controller("galleryCtrl", function ($scope, $http) {
     // }
 
     $http.get("actors.json").then(function Succsess(response) {
-        response.data.forEach(function AddCar(anObj){
-            $scope.celebArr.push(new Celeb(anObj)) 
-            
+        response.data.forEach(function AddCar(anObj) {
+            $scope.celebArr.push(new Celeb(anObj))
+
             // alert(anObj.firstName);  
 
         })
 
-       
+
     },
 
         function Error() { });
@@ -58,31 +58,45 @@ app.controller("galleryCtrl", function ($scope, $http) {
         celeb.isSelected = true;
     }
 
-$scope.LookInTMDB= function(){
-//    מפתח API (v3 auth)
-//6e7ce819ef2812ef180f47645888bf65
+    $scope.LookInTMDB = function () {
+        //    מפתח API (v3 auth)
+        //6e7ce819ef2812ef180f47645888bf65
 
-//API אסימון גישת קריאת (v4 auth)
-//eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTdjZTgxOWVmMjgxMmVmMTgwZjQ3NjQ1ODg4YmY2NSIsInN1YiI6IjViM2UwNTcwYzNhMzY4NTA2OTAwOTRhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.li9CHjnsCD5SbGFvek2B4Zhw6KcunocsOVQAWaRmEag
+        //API אסימון גישת קריאת (v4 auth)
+        //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTdjZTgxOWVmMjgxMmVmMTgwZjQ3NjQ1ODg4YmY2NSIsInN1YiI6IjViM2UwNTcwYzNhMzY4NTA2OTAwOTRhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.li9CHjnsCD5SbGFvek2B4Zhw6KcunocsOVQAWaRmEag
 
-//API דוגמה של בקשת
-//https://api.themoviedb.org/3/movie/550?api_key=6e7ce819ef2812ef180f47645888bf65
+        //API דוגמה של בקשת
+        //https://api.themoviedb.org/3/movie/550?api_key=6e7ce819ef2812ef180f47645888bf65
 
 
-    $http.get("https://api.themoviedb.org/3/authentication/token/new?api_key=6e7ce819ef2812ef180f47645888bf65").then(function Succsess(response){
-        //https://developers.themoviedb.org/3/authentication/create-request-token
-        https://api.themoviedb.org/3/find/{external_id}?api_key=<<api_key>>&language=en-US&external_source=imdb_id
-        alert('GOOD ' + JSON.stringify( response));
-    },
-    function error(){
-          alert('error');
+        // https://developers.themoviedb.org/3/movies/get-popular-movies
+        
+
+        $http.get("https://api.themoviedb.org/3/movie/popular?api_key=6e7ce819ef2812ef180f47645888bf65&language=en-US&page=1").then(
+            function Succsess(response) {
+                //https://developers.themoviedb.org/3/authentication/create-request-token
+                //https://api.themoviedb.org/3/find/{external_id}?api_key=<<api_key>>&language=en-US&external_source=imdb_id
+                alert('GOOD ' + JSON.stringify(response.data));
+            },
+            function error() {
+                alert('error');
+            }
+
+        );
+
+        // $http.get("https://api.themoviedb.org/3/authentication/token/new?api_key=6e7ce819ef2812ef180f47645888bf65").then(
+        //     function Succsess(response) {                                
+        //         alert('GOOD ' + JSON.stringify(response));
+        //     },
+        //     function error() {
+        //         alert('error');
+        //     }
+
+        // );
+
+
+
     }
-
-);
-    
-
-  
-}
 
 
     $scope.filterBy = function (oneCard, index) {
