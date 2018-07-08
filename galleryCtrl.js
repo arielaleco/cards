@@ -195,9 +195,19 @@ app.controller("galleryCtrl", function ($scope, $http) {
             
                  movie.runtime = values[0].data.runtime;
                  movie.imdb_id = values[0].data.imdb_id;
-                 alert(movie.name);
+
+                 var str = values[1].data.cast[0].name;
+                 for(var i=1;i<values[1].data.cast.length;i++)
+                 {
+                    str =   str + ','+ values[1].data.cast[i].name;
+                 }
+                 movie.actorList = str; 
+                // console.log("ddd" +  values[1].data.cast.length);
+                 
+                 //alert(movie.name);
                  $scope.moviesArr.push(movie);
-                 alert($scope.moviesArr.length);
+                 //alert($scope.moviesArr.length);
+                 $scope.$apply();
 
             console.log(values);
 

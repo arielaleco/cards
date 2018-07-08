@@ -1,16 +1,16 @@
-
-<div class="one-list-row">
+<div class="one-list-row border mb-3">
     <img class="image-100" ng-src="{{movie.imageUrl}}" alt="Card image">
     <div class="side-div">
         <div>
-        <h6 class="title-in-line"> Movie Name:</h6>
-        <p class="title-in-line">{{ movie.name   }}</p>
+            <h6 class="title-in-line"> Movie Name:</h6>
+            <p class="title-in-line">{{ movie.name }}</p>
         </div>
-        <p class="title-in-line">{{ movie.id   }}</p>
-    <div>
-        <h6 class="title-in-line"> Duration:</h6>
-        <p class="title-in-line">{{ movie.runtime   }}</p>
-    </div>
-        <h6>Actors</h6>
+
+        <div>
+            <h6 class="title-in-line"> Duration:</h6>
+            <p class="title-in-line">{{ movie.runtime }}</p>
+        </div>
+        <h6 class="title-in-line"> Actors:</h6>
+        <p class="title-in-line">{{ movie.actorList }}</p>
     </div>
 </div>
