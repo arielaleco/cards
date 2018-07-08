@@ -20,6 +20,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="app.js"></script>
     <script src="galleryCtrl.js"></script>
+    <script src="moviesDirective.js"></script>
     <link rel="stylesheet" href="style.css">
 
     <title>Document</title>
@@ -29,43 +30,33 @@
     <!-- {{5+5}} -->
     <main ng-controller="galleryCtrl">
         <h1 class="header">My Gallery</h1>
-        <!-- {{test}} -->    
+        <!-- {{test}} -->
         <div class="container gallery">
             <div class="row">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                           
+
                         <button class="btn btn-outline-secondary" type="button">
-                            <i class="fa fa-search"></i></button>
-                           
-                              
+                            <i class="fa fa-search"></i>
+                        </button>
+
+
                     </div>
-                    <!-- ng-onchange="orderBySelect()" -->
-                    <!-- <select class="selectpicker" ng-model="propToOrder" ng-options="x for x in orderByArr" >
-                    </select> -->
                     <select ng-model="propToOrder" class="selectpicker">
                         <option ng-repeat="x in orderByArr" value="{{x.attName}}">{{x.attValue}}</option>
-                        </select>
-
-
-                    <!-- <select class="selectpicker"  ng-model="propToOrder">
-                            <option value="firstName">First Name</option>
-                            <option value="lastName">Last Name</option>
-                            <option value="birthDate">Birtday</option>
-                          </select> -->
+                    </select>
                     <input ng-model="query" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
                 </div>
 
             </div>
-            
-            
-            <div class="row">
-                    <div ng-hide="filteredCounter>0" class="alert alert-warning" role="alert">
-                            <p>No Actors were found !
-                            ( try changing the filter ) </p> 
-                          </div>     
+
+
+            <!-- <div class="row">
+                <div ng-hide="filteredCounter>0" class="alert alert-warning" role="alert">
+                    <p>No Actors were found ! ( try changing the filter ) </p>
+                </div>
                 <div ng-repeat="celeb in celebArr| filter : filterBy | orderBy : propToOrder" class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="card p-1 mb-4" ng-class="{'selected-card':celeb.isSelected}" ng-click="cardWasClicked(celeb)">                        
+                    <div class="card p-1 mb-4" ng-class="{'selected-card':celeb.isSelected}" ng-click="cardWasClicked(celeb)">
                         <img class="card-img-top" ng-src="{{celeb.celebImage}}" alt="Card image" style="width:100%">
                         <div class="card-body">
                             <h4 class="card-title">{{celeb.firstName + " " + celeb.lastName }}</h4>
@@ -78,16 +69,44 @@
 
 
 
-            </div>
-        </div>
-    
-<div class="white-fonts">
-    <button ng-click="LookInTMDB()">Push Me</button>
-    <p>Look for moviews</p>
-    <p>What are the most popular movies?</p>
+            </div> -->
 
-</div>
-</main>
+         <!-- ===================== Movies ===================== -->
+
+            <div class="row">
+                <div class="input-group mb-3">
+                    <form class="search-box my-2">
+                        <input type="text" class="form-control" placeholder="Add Movie" ng-model="searchText" ng-change="searchChange()" />
+                        <div class="search-results list-group">
+                            <a href="#" class="list-group-item list-group-item-action" ng-repeat="result in searchResults" ng-click="addMovie(result)">{{result.original_title}}</a>
+                        </div>
+                </div>
+                </form>               
+
+            </div>
+            <div class="row">
+                <!-- <div ng-hide="filteredCounter>0" class="alert alert-warning" role="alert">
+                        <p>No Movies were found ! ( try changing the filter ) </p>
+                    </div> -->
+
+                <div class="movie-galery-list list-group">
+                    <div ng-repeat="movie in moviesArr" >
+
+                        <movie-directive></movie-directive>
+                    </div>
+                </div>
+            </div>
+
+
+            
+
+            <!-- <div class="white-fonts">
+                <button ng-click="LookInTMDB()">Push Me</button>
+                <p>Look for moviews</p>
+                <p>What are the most popular movies?</p>
+
+            </div> -->
+    </main>
 </body>
 
 </html>
