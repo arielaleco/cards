@@ -43,14 +43,18 @@ color: white;
     width: 100px;
     height: 150px;
     margin: 10px;
+    /* float:left ; */
+    vertical-align: top;
     /* display: block; */
 }
 .one-list-row {
-    background-color: white;
+    background-color: rgba(165,135,141,1);
 }
 .side-div{
     display: inline-block;
     margin: 10px;
+    /* float:left ; */
+    width:80%;
 }
 .search-box {
     position: relative;
@@ -64,6 +68,11 @@ color: white;
   }
   .title-in-line{
     display: inline;
+  }
+
+  .one-movie{
+      /* background-color: pink; */
+
   }
 /* .card{
     padding:10px 10px;
