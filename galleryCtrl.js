@@ -166,23 +166,50 @@ app.controller("galleryCtrl", function ($scope, $http) {
         //https://api.themoviedb.org/3/movie/158015?api_key=6e7ce819ef2812ef180f47645888bf65&language=en-US
 
 
-        var searchUrl = "https://api.themoviedb.org/3/movie/" + movie.id + "?api_key=" + API_KEY + "&language=en-US";
-        $http.get(searchUrl).then(function (response) {
+        var movieDetailsUrl = "https://api.themoviedb.org/3/movie/" + movie.id + "?api_key=" + API_KEY + "&language=en-US";
+        var promiseDetails = $http.get(movieDetailsUrl);
+        // $http.get(movieDetailsUrl).then(function (response) {
            
-            movie.runtime = response.data.runtime;
-            movie.imdb_id = response.data.imdb_id;
-            $scope.moviesArr.push(movie);
+        //     movie.runtime = response.data.runtime;
+        //     movie.imdb_id = response.data.imdb_id;
+        //     $scope.moviesArr.push(movie);
 
-            //$scope.searchResults = response.data.results;
-        }, function (error) {
-            console.error(error);
-        })
+        //     //$scope.searchResults = response.data.results;
+        // }, function (error) {
+        //     console.error(error);
+        // })
 
+        var movieActorsUrl = "https://api.themoviedb.org/3/movie/" + movie.id + "/credits?api_key=" + API_KEY  ;        
+        var promiseActors = $http.get(movieActorsUrl);
+        
+        // $http.get(movieActorsUrl).then(function (response) {
+           
+        //     movie.runtime = response.data.runtime;
+        //     movie.imdb_id = response.data.imdb_id;
+        //     $scope.moviesArr.push(movie);       
+        // }, function (error) {
+        //     console.error(error);
+        // })
+
+        Promise.all([promiseDetails, promiseActors]).then(values => { 
+            
+                 movie.runtime = values[0].data.runtime;
+                 movie.imdb_id = values[0].data.imdb_id;
+                 alert(movie);
+                 $scope.moviesArr.push(movie);
+
+            console.log(values);
+
+
+          }).catch(reason => { 
+            console.log(reason)
+          });
 
          // get actors
         // https://api.themoviedb.org/3/movie/24428/credits?api_key=6e7ce819ef2812ef180f47645888bf65
 
-
+        //promise all
+        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
 
 
 
