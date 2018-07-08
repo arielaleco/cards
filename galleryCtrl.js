@@ -195,8 +195,9 @@ app.controller("galleryCtrl", function ($scope, $http) {
             
                  movie.runtime = values[0].data.runtime;
                  movie.imdb_id = values[0].data.imdb_id;
-                 alert(movie);
+                 alert(movie.name);
                  $scope.moviesArr.push(movie);
+                 alert($scope.moviesArr.length);
 
             console.log(values);
 
