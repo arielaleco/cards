@@ -2,10 +2,15 @@
 <div class="one-list-row">
     <img class="image-100" ng-src="{{movie.imageUrl}}" alt="Card image">
     <div class="side-div">
+        <div>
         <h6 class="title-in-line"> Movie Name:</h6>
         <p class="title-in-line">{{ movie.name   }}</p>
-        
-        <h6>Movie Length</h6>
+        </div>
+        <p class="title-in-line">{{ movie.id   }}</p>
+    <div>
+        <h6 class="title-in-line"> Duration:</h6>
+        <p class="title-in-line">{{ movie.runtime   }}</p>
+    </div>
         <h6>Actors</h6>
     </div>
 </div>

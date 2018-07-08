@@ -133,15 +133,13 @@ app.controller("galleryCtrl", function ($scope, $http) {
         // Calling the API only if there is data in the search
         if ($scope.searchText) {
 
+            //https://developers.themoviedb.org/3/search/search-movies
+
             var searchUrl = "https://api.themoviedb.org/3/search/movie?api_key=" +
                 API_KEY + "&language=en-US&query=" + encodeURIComponent($scope.searchText) +
                 "&page=1&include_adult=false";
             $http.get(searchUrl).then(function (response) {
-               
                 $scope.searchResults = response.data.results;
-               
-
-
             }, function (error) {
                 console.error(error);
             })
@@ -151,31 +149,59 @@ app.controller("galleryCtrl", function ($scope, $http) {
     }
 
     function Movie(obj) {
-        this.name = obj.original_title;        
+        this.name = obj.original_title;
         this.imageUrl = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + obj.backdrop_path;
         this.id = obj.id;
-      }
+    }
 
     $scope.moviesArr = [];
-    $scope.addMovie = function(result) {
-        var movie = new Movie(result);        
-        $scope.moviesArr.push(movie);
-       
+    $scope.addMovie = function (result) {
+
+        var movie = new Movie(result);
+
+        var API_KEY = "6e7ce819ef2812ef180f47645888bf65";
+        // Calling the API only if there is data in the search
+
+
+        //https://api.themoviedb.org/3/movie/158015?api_key=6e7ce819ef2812ef180f47645888bf65&language=en-US
+
+
+        var searchUrl = "https://api.themoviedb.org/3/movie/" + movie.id + "?api_key=" + API_KEY + "&language=en-US";
+        $http.get(searchUrl).then(function (response) {
+           
+            movie.runtime = response.data.runtime;
+            movie.imdb_id = response.data.imdb_id;
+            $scope.moviesArr.push(movie);
+
+            //$scope.searchResults = response.data.results;
+        }, function (error) {
+            console.error(error);
+        })
+
+
+         // get actors
+        // https://api.themoviedb.org/3/movie/24428/credits?api_key=6e7ce819ef2812ef180f47645888bf65
+
+
+
+
+
+
         // var actorId = result.id;
         // var actorTmdbUrl = "https://api.themoviedb.org/3/person/" + actorId +
         //   "?api_key=" + API_KEY + "&language=en-US";
-        
+
         // $http.get(actorTmdbUrl).then(function(response) {
         //   var actor = new Actor(response.data.name, response.data.birthday, response.data.profile_path, response.data.imdb_id);
         //   $scope.actors.push(actor);      
         // }, function(error) {
         //   console.error(error);
         // });
-        
+
         $scope.searchText = "";
         $scope.searchResults = [];
-        
-      }
+
+    }
 
 
 });
