@@ -74,16 +74,23 @@ color: white;
       /* background-color: pink; */
 
   }
-/* .card{
-    padding:10px 10px;
-    background-color: lightgray;
-    display: inline-block;
-    width: 300px;
-    margin: 10px;
-    text-align: center;
-}
-.gallery{
-    margin: auto;
-    text-align: center;
-    width: 90%;
-} */
+
+
+  .flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: rgba(165,135,141,1);
+  }
+  
+  .flex-container > div {
+       
+    margin: 8px;
+    text-align: left;
+   
+  }
+  .movie-image-div{
+    width: 200px;
+  }
+  .movie-text-div{
+    width: 100%-200px;
+  }

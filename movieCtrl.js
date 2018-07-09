@@ -1,4 +1,4 @@
-app.controller("movieCtrl", function ($scope, $http) {
+app.controller("movieCtrl", function ($scope, $http, convertUnits) {
 
     $scope.searchResults = [];
     $scope.searchChange = function () {
@@ -39,7 +39,9 @@ app.controller("movieCtrl", function ($scope, $http) {
                 
         Promise.all([promiseDetails, promiseActors]).then(values => { 
             
-                 movie.runtime = values[0].data.runtime;
+            
+            movie.runtime = convertUnits.convertMovieDuration(values[0].data.runtime);
+                 //movie.runtime = values[0].data.runtime;
                  movie.imdb_id = values[0].data.imdb_id;
 
                  var str = values[1].data.cast[0].name;
@@ -47,13 +49,11 @@ app.controller("movieCtrl", function ($scope, $http) {
                  {
                     str =   str + ','+ values[1].data.cast[i].name;
                  }
-                 movie.actorList = str; 
-                // console.log("ddd" +  values[1].data.cast.length);
-                 
-                 //alert(movie.name);
-                 $scope.moviesArr.push(movie);
-                 //alert($scope.moviesArr.length);
+                 movie.actorList = str;             
+                 $scope.moviesArr.push(movie);               
                  $scope.$apply();
+                
+                // window.scrollTo(0, 2000);
 
             console.log(values);
 

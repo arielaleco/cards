@@ -22,6 +22,7 @@
     <script src="galleryCtrl.js"></script>
     <script src="movieCtrl.js"></script>
     <script src="moviesDirective.js"></script>
+    <script src="convertService.js"></script>
     <link rel="stylesheet" href="style.css">
 
     <title>Document</title>
@@ -81,7 +82,7 @@
                     <form class="search-box my-2">
                         <input type="text" class="form-control" placeholder="Add Movie" ng-model="searchText" ng-change="searchChange()" />
                         <div class="search-results list-group">
-                            <a href="#" class="list-group-item list-group-item-action" ng-repeat="result in searchResults" ng-click="addMovie(result)">{{result.original_title}}</a>
+                            <a href="javascript:void(0)" class="list-group-item list-group-item-action" ng-repeat="result in searchResults" ng-click="addMovie(result)">{{result.original_title}}</a>
                         </div>
                 </div>
                 </form>

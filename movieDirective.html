@@ -1,4 +1,4 @@
-<div class="one-list-row border mb-3 rounded">
+<!-- <div class="one-list-row border mb-3 rounded">
     <img class="image-100 rounded" ng-src="{{movie.imageUrl}}" alt="Card image">
     <div class="side-div">
         <div>
@@ -13,4 +13,25 @@
         <h6 class="title-in-line"> Actors:</h6>
         <p class="title-in-line">{{ movie.actorList }}</p>
     </div>
+</div> -->
+
+<div class="flex-container mb-3 border rounded">
+    <div class="movie-image-div">
+        <img class="image-100 rounded" ng-src="{{movie.imageUrl}}" alt="Card image">
+    </div>
+    <div class="movie-text-div">
+        <div>
+            <h6 class="title-in-line"> Movie Name:</h6>
+            <p class="title-in-line">{{ movie.name }}</p>
+        </div>
+
+        <div>
+            <h6 class="title-in-line"> Duration:</h6>
+            <p class="title-in-line">{{ movie.runtime }}</p>
+        </div>
+        <h6 class="title-in-line"> Actors:</h6>
+        <p class="title-in-line">{{ movie.actorList }}</p>
+
+    </div>
+
 </div>
