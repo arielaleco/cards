@@ -20,6 +20,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="app.js"></script>
     <script src="galleryCtrl.js"></script>
+    <script src="movieCtrl.js"></script>
     <script src="moviesDirective.js"></script>
     <link rel="stylesheet" href="style.css">
 
@@ -71,8 +72,10 @@
 
             </div>
 
-         <!-- ===================== Movies ===================== -->
-
+            <!-- ===================== Movies ===================== -->
+    </main>
+    <div ng-controller="movieCtrl">
+        <div class="container">
             <div class="row">
                 <div class="input-group mb-3">
                     <form class="search-box my-2">
@@ -81,7 +84,7 @@
                             <a href="#" class="list-group-item list-group-item-action" ng-repeat="result in searchResults" ng-click="addMovie(result)">{{result.original_title}}</a>
                         </div>
                 </div>
-                </form>               
+                </form>
 
             </div>
             <div class="row">
@@ -90,23 +93,25 @@
                     </div> -->
 
                 <div class="movie-galery-list list-group">
-                    <div ng-repeat="movie in moviesArr" class="one-movie" >
+                    <div ng-repeat="movie in moviesArr" class="one-movie">
 
                         <movie-directive></movie-directive>
                     </div>
                 </div>
             </div>
+        </div>
 
 
-            
 
-            <!-- <div class="white-fonts">
+
+        <!-- <div class="white-fonts">
                 <button ng-click="LookInTMDB()">Push Me</button>
                 <p>Look for moviews</p>
                 <p>What are the most popular movies?</p>
 
             </div> -->
-    </main>
+
+    </div>
 </body>
 
 </html>

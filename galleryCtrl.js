@@ -127,119 +127,70 @@ app.controller("galleryCtrl", function ($scope, $http) {
 
     //$scope.
     //-------------------------------------------------------------
-    $scope.searchResults = [];
-    $scope.searchChange = function () {
-        var API_KEY = "6e7ce819ef2812ef180f47645888bf65";
-        // Calling the API only if there is data in the search
-        if ($scope.searchText) {
+    // $scope.searchResults = [];
+    // $scope.searchChange = function () {
+    //     var API_KEY = "6e7ce819ef2812ef180f47645888bf65";        
+    //     if ($scope.searchText) {
+    //         var searchUrl = "https://api.themoviedb.org/3/search/movie?api_key=" +
+    //             API_KEY + "&language=en-US&query=" + encodeURIComponent($scope.searchText) +
+    //             "&page=1&include_adult=false";
+    //         $http.get(searchUrl).then(function (response) {
+    //             $scope.searchResults = response.data.results;
+    //         }, function (error) {
+    //             console.error(error);
+    //         })
+    //     } else {
+    //         $scope.searchResults = [];
+    //     }
+    // }
 
-            //https://developers.themoviedb.org/3/search/search-movies
+    // function Movie(obj) {
+    //     this.name = obj.original_title;
+    //     this.imageUrl = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + obj.backdrop_path;
+    //     this.id = obj.id;
+    // }
 
-            var searchUrl = "https://api.themoviedb.org/3/search/movie?api_key=" +
-                API_KEY + "&language=en-US&query=" + encodeURIComponent($scope.searchText) +
-                "&page=1&include_adult=false";
-            $http.get(searchUrl).then(function (response) {
-                $scope.searchResults = response.data.results;
-            }, function (error) {
-                console.error(error);
-            })
-        } else {
-            $scope.searchResults = [];
-        }
-    }
+    // $scope.moviesArr = [];
+    // $scope.addMovie = function (result) {
 
-    function Movie(obj) {
-        this.name = obj.original_title;
-        this.imageUrl = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + obj.backdrop_path;
-        this.id = obj.id;
-    }
+    //     var movie = new Movie(result);
 
-    $scope.moviesArr = [];
-    $scope.addMovie = function (result) {
+    //     var API_KEY = "6e7ce819ef2812ef180f47645888bf65";                
 
-        var movie = new Movie(result);
-
-        var API_KEY = "6e7ce819ef2812ef180f47645888bf65";
-        // Calling the API only if there is data in the search
-
-
-        //https://api.themoviedb.org/3/movie/158015?api_key=6e7ce819ef2812ef180f47645888bf65&language=en-US
-
-
-        var movieDetailsUrl = "https://api.themoviedb.org/3/movie/" + movie.id + "?api_key=" + API_KEY + "&language=en-US";
-        var promiseDetails = $http.get(movieDetailsUrl);
-        // $http.get(movieDetailsUrl).then(function (response) {
-           
-        //     movie.runtime = response.data.runtime;
-        //     movie.imdb_id = response.data.imdb_id;
-        //     $scope.moviesArr.push(movie);
-
-        //     //$scope.searchResults = response.data.results;
-        // }, function (error) {
-        //     console.error(error);
-        // })
-
-        var movieActorsUrl = "https://api.themoviedb.org/3/movie/" + movie.id + "/credits?api_key=" + API_KEY  ;        
-        var promiseActors = $http.get(movieActorsUrl);
-        
-        // $http.get(movieActorsUrl).then(function (response) {
-           
-        //     movie.runtime = response.data.runtime;
-        //     movie.imdb_id = response.data.imdb_id;
-        //     $scope.moviesArr.push(movie);       
-        // }, function (error) {
-        //     console.error(error);
-        // })
-
-        Promise.all([promiseDetails, promiseActors]).then(values => { 
+    //     var movieDetailsUrl = "https://api.themoviedb.org/3/movie/" + movie.id + "?api_key=" + API_KEY + "&language=en-US";
+    //     var promiseDetails = $http.get(movieDetailsUrl);        
+    //     var movieActorsUrl = "https://api.themoviedb.org/3/movie/" + movie.id + "/credits?api_key=" + API_KEY  ;        
+    //     var promiseActors = $http.get(movieActorsUrl);
+                
+    //     Promise.all([promiseDetails, promiseActors]).then(values => { 
             
-                 movie.runtime = values[0].data.runtime;
-                 movie.imdb_id = values[0].data.imdb_id;
+    //              movie.runtime = values[0].data.runtime;
+    //              movie.imdb_id = values[0].data.imdb_id;
 
-                 var str = values[1].data.cast[0].name;
-                 for(var i=1;i<values[1].data.cast.length;i++)
-                 {
-                    str =   str + ','+ values[1].data.cast[i].name;
-                 }
-                 movie.actorList = str; 
-                // console.log("ddd" +  values[1].data.cast.length);
+    //              var str = values[1].data.cast[0].name;
+    //              for(var i=1;i<values[1].data.cast.length;i++)
+    //              {
+    //                 str =   str + ','+ values[1].data.cast[i].name;
+    //              }
+    //              movie.actorList = str; 
+    //             // console.log("ddd" +  values[1].data.cast.length);
                  
-                 //alert(movie.name);
-                 $scope.moviesArr.push(movie);
-                 //alert($scope.moviesArr.length);
-                 $scope.$apply();
+    //              //alert(movie.name);
+    //              $scope.moviesArr.push(movie);
+    //              //alert($scope.moviesArr.length);
+    //              $scope.$apply();
 
-            console.log(values);
-
-
-          }).catch(reason => { 
-            console.log(reason)
-          });
-
-         // get actors
-        // https://api.themoviedb.org/3/movie/24428/credits?api_key=6e7ce819ef2812ef180f47645888bf65
-
-        //promise all
-        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
+    //         console.log(values);
 
 
+    //       }).catch(reason => { 
+    //         console.log(reason)
+    //       });
+        
+    //     $scope.searchText = "";
+    //     $scope.searchResults = [];
 
-
-        // var actorId = result.id;
-        // var actorTmdbUrl = "https://api.themoviedb.org/3/person/" + actorId +
-        //   "?api_key=" + API_KEY + "&language=en-US";
-
-        // $http.get(actorTmdbUrl).then(function(response) {
-        //   var actor = new Actor(response.data.name, response.data.birthday, response.data.profile_path, response.data.imdb_id);
-        //   $scope.actors.push(actor);      
-        // }, function(error) {
-        //   console.error(error);
-        // });
-
-        $scope.searchText = "";
-        $scope.searchResults = [];
-
-    }
+    // }
 
 
 });
