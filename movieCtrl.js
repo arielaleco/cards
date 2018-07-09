@@ -1,4 +1,4 @@
-app.controller("movieCtrl", function ($scope, $http, convertUnits) {
+app.controller("movieCtrl", function ($scope, $http, convertUnits,$location,$anchorScroll) {
 
     $scope.searchResults = [];
     $scope.searchChange = function () {
@@ -52,7 +52,9 @@ app.controller("movieCtrl", function ($scope, $http, convertUnits) {
                  movie.actorList = str;             
                  $scope.moviesArr.push(movie);               
                  $scope.$apply();
-                
+                 $location.hash('end-of-movies');
+                 $anchorScroll();
+                 //$anchorScroll();
                 // window.scrollTo(0, 2000);
 
             console.log(values);
