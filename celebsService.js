@@ -1,4 +1,4 @@
-app.factory('celebsServices', function ($log, $q,$http) {
+app.factory('celebsServices', function ($log, $q, $http) {
 
     // example https://plnkr.co/edit/DNQxGJpft4RypcrQO7FW?p=info
     celebArr = [];
@@ -13,11 +13,9 @@ app.factory('celebsServices', function ($log, $q,$http) {
         this.birthDate = d;
     }
 
-    function readFromFile() {
-        // define asynchronous object
-        var asyncAction = $q.defer();
+    readTheFile();
 
-
+    function readTheFile() {
         // read json file
         $http.get("actors.json").then(function Succsess(response) {
             response.data.forEach(function AddCar(anObj) {
@@ -26,21 +24,55 @@ app.factory('celebsServices', function ($log, $q,$http) {
                 // alert(anObj.firstName);  
 
             });
-            asyncAction.resolve(celebArr);
+
 
 
         },
 
-            function Error() {   
-                asyncAction.reject("failed to load celebs.json");
-                 $log.Error;
-                
-                });
+            function Error() {
+
+                $log.Error;
+
+            });
+
+    }
+
+    function readFromFile() {
+        // define asynchronous object
+        var asyncAction = $q.defer();       
+        asyncAction.resolve(celebArr);
         return asyncAction.promise;
     }
 
+
+    // function readFromFile() {
+    //     // define asynchronous object
+    //     var asyncAction = $q.defer();
+
+
+    //     // read json file
+    //     $http.get("actors.json").then(function Succsess(response) {
+    //         response.data.forEach(function AddCar(anObj) {
+    //             celebArr.push(new Celeb(anObj))
+
+    //             // alert(anObj.firstName);  
+
+    //         });
+    //         asyncAction.resolve(celebArr);
+
+
+    //     },
+
+    //         function Error() {
+    //             asyncAction.reject("failed to load celebs.json");
+    //             $log.Error;
+
+    //         });
+    //     return asyncAction.promise;
+    // }
+
     return {
-        readCelebs : readFromFile
+        readCelebs: readFromFile
         //   convertMovieDuration : convertMovieLength
     }
 });

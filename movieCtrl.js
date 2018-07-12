@@ -36,9 +36,9 @@ app.controller("movieCtrl", function ($scope,$location,$anchorScroll,moviesServi
     $scope.addMovie = function (result) {
         moviesServices.getMovie(result).then(function (moviesArr) {
             $scope.moviesArr = moviesArr;
-            // $scope.$apply();
-             $location.hash('end-of-movies');
-             $anchorScroll();
+             //$scope.$apply();
+             //$location.hash('end-of-movies');
+            // $anchorScroll();
 
         }, function (error) {
     

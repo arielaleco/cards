@@ -1,0 +1,30 @@
+<div ng-controller="movieCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="input-group mb-3">
+                <form class="search-box my-2">
+                    <input type="text" class="form-control" placeholder="Add Movie" ng-model="searchText" ng-change="searchChange()" />
+                    <div class="search-results list-group">
+                        <a href="javascript:void(0)" class="list-group-item list-group-item-action" ng-repeat="result in searchResults" ng-click="addMovie(result)">{{result.original_title}}</a>
+                    </div>
+            </div>
+            </form>
+
+        </div>
+        <div class="row">
+            <!-- <div ng-hide="filteredCounter>0" class="alert alert-warning" role="alert">
+                        <p>No Movies were found ! ( try changing the filter ) </p>
+                    </div> -->
+
+            <div class="movie-galery-list list-group">
+                <div ng-repeat="movie in moviesArr" class="one-movie">
+
+                    <movie-directive></movie-directive>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+
+
+    

@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
     <script src="app.js"></script>
     <script src="galleryCtrl.js"></script>
     <script src="movieCtrl.js"></script>
@@ -32,10 +34,45 @@
 </head>
 
 <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Ariela Leiba Cohen</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item active">  
+                                <a class="nav-link" href="#!/celebs">Celebs
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                    <a class="nav-link" href="#!/moviessection">Movies
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+
+            <ng-view>
+
+            </ng-view>
     <!-- {{5+5}} -->
-    <main ng-controller="galleryCtrl">
-        <h1 class="header">My Gallery</h1>
-        <!-- {{test}} -->
+    <!-- <main ng-controller="galleryCtrl">
+        <h1 class="header">My Gallery</h1>     
         <div class="container gallery">
             <div class="row">
                 <div class="input-group mb-3">
@@ -76,9 +113,10 @@
 
             </div>
 
-            <!-- ===================== Movies ===================== -->
-    </main>
-    <div ng-controller="movieCtrl">
+          
+    </main> -->
+      <!-- ===================== Movies ===================== -->
+    <!-- <div ng-controller="movieCtrl">
         <div class="container">
             <div class="row">
                 <div class="input-group mb-3">
@@ -91,11 +129,7 @@
                 </form>
 
             </div>
-            <div class="row">
-                <!-- <div ng-hide="filteredCounter>0" class="alert alert-warning" role="alert">
-                        <p>No Movies were found ! ( try changing the filter ) </p>
-                    </div> -->
-
+            <div class="row">                
                 <div class="movie-galery-list list-group">
                     <div ng-repeat="movie in moviesArr" class="one-movie">
 
@@ -103,10 +137,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
-<div id="end-of-movies"></div>
+       
 
         <!-- <div class="white-fonts">
                 <button ng-click="LookInTMDB()">Push Me</button>
