@@ -76,42 +76,43 @@ app.factory('moviesServices', function ($log, $q, $http, convertUnits) {
 
     //======================== searchMovieDetails ==============================//
     function getMovieById(id) {
-        console.log('look for '+ id +' in array' +  moviesArr ) ;
+        console.log('look for ' + id + ' in array' + moviesArr.length);
         for (var i = 0; i < moviesArr.length; i++) {
-            console.log('existing '+ moviesArr[i].id);
+            console.log('existing ' + moviesArr[i].id);
             if (moviesArr[i].id == id) {
                 return moviesArr[i];
-            }
-            results - 1;
+            }            
         }
+        results - 1;
     }
 
-  
+
     function searchMovieDetails(movieId) {
-        //https://api.themoviedb.org/3/movie/10195/videos?api_key=6e7ce819ef2812ef180f47645888bf65&language=en-US
-        // I will update the movie class
-        //1. find the right movie
+        //https://api.themoviedb.org/3/movie/10195/videos?api_key=6e7ce819ef2812ef180f47645888bf65&language=en-US        
+        var asyncAction = $q.defer();
         var movie = getMovieById(movieId);
 
-        if (movie != -1) {
-            var asyncAction = $q.defer();
-            if (movieId) {
-                var searchUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/videos?api_key=" +API_KEY + "&language=en-US";
-                console.log(searchUrl);
-                $http.get(searchUrl).then(function (response) {
-                    console.log('result length = '+  response.data.results.length);
 
-                    console.log("res is = "+response.data.results[0]);
-                    movie.youtubeUrl = response.data.results[0].key;
-                    console.log("movie.youtubeUrl = "+ movie.youtubeUrl);
-                }, function (error) {
-                    console.error(error);
-                })
-            } else {
-                movie.youtubeUrl = "";
-            }
+        if (movie != -1) {         
+            var searchUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/videos?api_key=" + API_KEY + "&language=en-US";
+            console.log(searchUrl);
+            $http.get(searchUrl).then(function (response) {
+                console.log('result length = ' + response.data.results.length);
+
+                console.log("res is = " + response.data.results[0]);
+                movie.youtubeUrl = response.data.results[0].key;
+                console.log("movie.youtubeUrl = " + movie.youtubeUrl);
+                asyncAction.resolve(movie);
+            }, function (error) {
+                console.error(error);
+                asyncAction.reject(error);
+
+            })            
         }
-        asyncAction.resolve(movie);
+        else {
+            asyncAction.reject("Movie not found !");
+        }
+
         return asyncAction.promise;
 
     }
