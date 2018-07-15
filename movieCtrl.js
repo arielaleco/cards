@@ -50,9 +50,7 @@ app.controller("movieCtrl", function ($scope,$location,$anchorScroll,moviesServi
 
     }
 
-    $scope.getMovieDetails = function(movie){
-
-        //alert("here " + movie.id);
+    $scope.getMovieDetails = function(movie){        
         $location.path("/moviessection/" + movie.id);
     }
     

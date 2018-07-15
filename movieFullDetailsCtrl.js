@@ -4,13 +4,12 @@ app.controller('movieFullDetailsCtrl', function($scope, $routeParams,moviesServi
     //alert($routeParams.movieId );
 
     moviesServices.getMovieDetails($scope.movieId).then(function (movie) {
-        console.log('in here');
+        
 
         var theLink = $sce.trustAsResourceUrl("https://www.youtube.com/embed/" +movie.youtubeUrl) ; 
         $scope.youtubeUrl = theLink;
-        
-        
-       // alert(youtube);
+        $scope.youtubeUrlname = movie.youtubeUrlname;
+                       
     }, function (error) {
 
         $log.error(error)

@@ -32,6 +32,7 @@ app.factory('moviesServices', function ($log, $q, $http, convertUnits) {
         this.imageUrl = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + obj.backdrop_path;
         this.id = obj.id;
         this.youtubeUrl = "";
+        this.youtubeUrlname = "";
     }
 
     moviesArr = [];
@@ -94,17 +95,14 @@ app.factory('moviesServices', function ($log, $q, $http, convertUnits) {
 
 
         if (movie != -1) {         
-            var searchUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/videos?api_key=" + API_KEY + "&language=en-US";
-            console.log(searchUrl);
-            $http.get(searchUrl).then(function (response) {
-                console.log('result length = ' + response.data.results.length);
-
-                console.log("res is = " + response.data.results[0]);
-                movie.youtubeUrl = response.data.results[0].key;
-                console.log("movie.youtubeUrl = " + movie.youtubeUrl);
+            var searchUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/videos?api_key=" + API_KEY + "&language=en-US";            
+            $http.get(searchUrl).then(function (response) {                            
+                movie.youtubeUrl = response.data.results[0].key; 
+                movie.youtubeUrlname = response.data.results[0].name; 
+                           
                 asyncAction.resolve(movie);
             }, function (error) {
-                console.error(error);
+            
                 asyncAction.reject(error);
 
             })            
