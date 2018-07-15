@@ -14,6 +14,10 @@ app.config(function($routeProvider) {
         templateUrl: 'moviessection.html',
         controller: 'movieCtrl'
       })
+    .when('/moviessection/:movieId', {
+        templateUrl: 'movieFullDetails.html',
+        controller: 'movieFullDetailsCtrl'
+      })
     .otherwise({
       redirectTo: '/'
     })
