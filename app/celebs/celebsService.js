@@ -17,7 +17,7 @@ app.factory('celebsServices', function ($log, $q, $http) {
 
     function readTheFile() {
         // read json file
-        $http.get("actors.json").then(function Succsess(response) {
+        $http.get("app/celebs/actors.json").then(function Succsess(response) {
             response.data.forEach(function AddCar(anObj) {
                 celebArr.push(new Celeb(anObj))
 

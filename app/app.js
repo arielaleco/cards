@@ -7,15 +7,15 @@ app.config(function($routeProvider) {
       
     })
     .when('/celebs', {
-      templateUrl: 'celebs.html',
+      templateUrl: 'app/celebs/celebs.html',
       controller: 'galleryCtrl'
     })
     .when('/moviessection', {
-        templateUrl: 'moviessection.html',
+        templateUrl: 'app/movies/moviessection.html',
         controller: 'movieCtrl'
       })
     .when('/moviessection/:movieId', {
-        templateUrl: 'movieFullDetails.html',
+        templateUrl: 'app/movies/movieFullDetails.html',
         controller: 'movieFullDetailsCtrl'
       })
     .otherwise({
