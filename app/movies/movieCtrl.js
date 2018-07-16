@@ -10,8 +10,8 @@ app.controller("movieCtrl", function ($scope,$location,$anchorScroll,moviesServi
         });
     }
 
-        
-    //$scope.moviesArr = [];
+    //console.log($scope.moviesArr.length);    
+    $scope.moviesArr = [];
     $scope.addMovie = function (result) {
         moviesServices.getMovie(result).then(function (moviesArr) {
             $scope.moviesArr = moviesArr;
